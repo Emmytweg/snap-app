@@ -11,11 +11,11 @@ function App() {
     <div>
   <Router basename='/snap-app'>
 <Routes>
-<Route path='/' element={<Home />} />
-<Route path='/' element={<Company/>} />
-<Route path='/' element={<Features />} />
-<Route path='/' element={<Careers />} />
-<Route path='/' element={<About />} />
+<Route index  element={<Home />} />
+<Route path='/company' element={<Company/>} />
+<Route path='/features' element={<Features />} />
+<Route path='/Careers' element={<Careers />} />
+<Route path='/about' element={<About />} />
 </Routes>
 </Router>
     </div>
