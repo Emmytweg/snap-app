@@ -11,6 +11,7 @@
     "web-vitals": "^4.2.4",
     "homepage": "https://Emmytweg.github.io/snap-app"
 
+
   },
   "scripts": {
     "start": "react-scripts start",

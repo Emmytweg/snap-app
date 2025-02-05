@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import styles from './NavBar.module.css';
+import navbarStyles from './NavBar.module.css';
 import logo from './logo.svg';
 import { Link } from 'react-router-dom';
 import arrowUp from './icon-arrow-up.svg';
@@ -15,92 +15,47 @@ const Navbar = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
   const [menu, setMenu] = useState(false);
 
-  const toggleMenu = () => {
-    setMenu(prevShowMenu => !prevShowMenu);
-  };
-
-  const handleMouseEnter = (item) => {
-    setHoveredItem(item);
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredItem(null);
-  };
+  const toggleMenu = () => setMenu(prev => !prev);
+  const handleMouseEnter = (item) => setHoveredItem(item);
+  const handleMouseLeave = () => setHoveredItem(null);
 
   return (
-    <nav className={`${styles.navBar} ${menu ? styles.menuActive : ''}`}>
-      <div className={styles.logoCon}>
-        <img src={logo} alt='Logo' />
-        <img src={menu ? close : hamMenu} alt='Menu' className={styles.hamMenu} onClick={toggleMenu} />
+    <nav className={`${navbarStyles.navBar} ${menu ? navbarStyles.menuActive : ''}`}>
+      <div className={navbarStyles.logoCon}>
+      <Link>
+      <img src={logo} alt='Logo' />
+      </Link>  
+        <img src={menu ? close : hamMenu} alt='Menu' className={navbarStyles.hamMenu} onClick={toggleMenu} />
       </div>
-      <div className={menu ? styles.active : styles.firstNavCon}>
-        <div
-          className={styles.navItem}
-          onMouseEnter={() => handleMouseEnter('features')}
-          onMouseLeave={handleMouseLeave}
-        >
-          <p>
-            Features{' '}
-            {hoveredItem === 'features' ? (
-              <img src={arrowUp} alt="Arrow Up" />
-            ) : (
-              <img src={arrowDown} alt="Arrow Down" />
-            )}
-          </p>
+      <div className={menu ? navbarStyles.active : navbarStyles.firstNavCon}>
+        <div className={navbarStyles.navItem} onMouseEnter={() => handleMouseEnter('features')} onMouseLeave={handleMouseLeave}>
+          <p>Features {hoveredItem === 'features' ? <img src={arrowUp} alt="Arrow Up" /> : <img src={arrowDown} alt="Arrow Down" />}</p>
           {hoveredItem === 'features' && (
-            <div className={styles.featuresSubList}>
-              <p>
-                <img src={todoList} alt="Todo List" /> Todo List
-              </p>
-              <p>
-                <img src={calendar} alt="Calendar" /> Calendar
-              </p>
-              <p>
-                <img src={reminders} alt="Reminders" /> Reminders
-              </p>
-              <p>
-                <img src={planning} alt="Planning" /> Planning
-              </p>
+            <div className={navbarStyles.featuresSubList}>
+              <p><img src={todoList} alt="Todo List" /> Todo List</p>
+              <p><img src={calendar} alt="Calendar" /> Calendar</p>
+              <p><img src={reminders} alt="Reminders" /> Reminders</p>
+              <p><img src={planning} alt="Planning" /> Planning</p>
             </div>
           )}
         </div>
-        <div
-          className={styles.navItem}
-          onMouseEnter={() => handleMouseEnter('company')}
-          onMouseLeave={handleMouseLeave}
-        >
-          <p>
-            Company{' '}
-            {hoveredItem === 'company' ? (
-              <img src={arrowUp} alt="Arrow Up" />
-            ) : (
-              <img src={arrowDown} alt="Arrow Down" />
-            )}
-          </p>
+        <div className={navbarStyles.navItem} onMouseEnter={() => handleMouseEnter('company')} onMouseLeave={handleMouseLeave}>
+          <p>Company {hoveredItem === 'company' ? <img src={arrowUp} alt="Arrow Up" /> : <img src={arrowDown} alt="Arrow Down" />}</p>
           {hoveredItem === 'company' && (
-            <div className={styles.companySubList}>
-              <p>History</p>
-              <p>Our Team</p>
-              <p>Blog</p>
+            <div className={navbarStyles.companySubList}>
+              <Link to='/company/history'>History</Link>
+              <Link to='/company/team'>Our Team</Link>
+              <Link to='/company/blog'>Blog</Link>
             </div>
           )}
         </div>
-        <p className={styles.navItem}>
-          <Link to='/careers'>Careers</Link>
-        </p>
-        <p className={styles.navItem}>
-          <Link to='/about'>About</Link>
-        </p>
-        <div className={styles.authButtons}>
-        <button>
-          <Link to='/login'>Login</Link>
-        </button>
-        <button>
-          <Link to='/register'>Register</Link>
-        </button>
+        <Link to='/careers' className={navbarStyles.navItem}>Careers</Link>
+        <Link to='/about' className={navbarStyles.navItem}>About</Link>
+        <div className={navbarStyles.authButtons}>
+          <button><Link to='/login'>Login</Link></button>
+          <button><Link to='/register'>Register</Link></button>
+        </div>
       </div>
-      </div>
-     
     </nav>
   );
 };
