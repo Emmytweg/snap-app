@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 function App() {
   return (
     <div>
-  <Router basename=''>
+  <Router basename='/snap-app'>
 <Routes>
 <Route path='/' element={<Home />} />
 <Route path='/' element={<Company/>} />
