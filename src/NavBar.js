@@ -86,10 +86,10 @@ const Navbar = () => {
           )}
         </div>
         <p className={styles.navItem}>
-          <Link to='/'>Careers</Link>
+          <Link to='/Careers'>Careers</Link>
         </p>
         <p className={styles.navItem}>
-          <Link to='/'>About</Link>
+          <Link to='/about'>About</Link>
         </p>
         <div className={styles.authButtons}>
         <button>
