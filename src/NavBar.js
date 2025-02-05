@@ -86,7 +86,7 @@ const Navbar = () => {
           )}
         </div>
         <p className={styles.navItem}>
-          <Link to='/Careers'>Careers</Link>
+          <Link to='/careers'>Careers</Link>
         </p>
         <p className={styles.navItem}>
           <Link to='/about'>About</Link>
